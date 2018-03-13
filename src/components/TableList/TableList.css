@@ -1,0 +1,46 @@
+.TableList {
+    font-family: arial, sans-serif;
+    width: 100%;
+    background-color: white;
+    font-size: 16px;
+    font-style: none;
+}
+
+.TableList td, th {
+    text-align: left;
+    padding: 8px;
+    width: 200px;
+    border-bottom: 1px solid #F1F1F1;
+    font-weight: normal;
+}
+
+.TableList td {
+    height: 65px;
+}
+
+.TableList th:first-child{
+    font-weight: bold;
+}
+
+ .Icon{
+    margin-left: 10px;
+    display: inline-block;
+    font-weight: 100;
+}
+
+.Options{
+    display: inline-block;
+    font-size: 120%;
+    float: right;
+    margin-right: 15px;
+}
+
+.Option1 {
+    margin-right: 60px;
+    display: inline-block;
+
+}
+.Option2 {
+    display: inline-block;
+    
+}

@@ -1,0 +1,37 @@
+.Form {
+    display: inline-block;
+    
+}
+
+.FormWrapper{
+    width: 100%;
+    background-color: white;
+    padding: 16px;
+    position: relative;
+    margin-bottom: 20px;
+    
+
+}
+
+.Form input {
+    margin-right: 30px;
+    padding: 5px 5px 5px 10px;
+    height: 40px;
+    background-color: rgb(246, 240, 240);
+    border: 0.5px solid #AAAFBC;
+    border-style: none;
+    
+}
+
+.Form button {
+    height: 40px;
+    background-color: rgb(232, 229, 229);
+    text-align: center;
+    padding: 10px 20px;
+    position: absolute;
+    right: 16px;
+    border-style: none;
+    color: #747474;
+    font-weight: 400;
+    font-weight: bold;
+}
