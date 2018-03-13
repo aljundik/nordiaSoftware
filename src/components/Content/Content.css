@@ -1,0 +1,10 @@
+.Content {
+    width: 912px;
+    margin: 0 auto;
+    color: #747474;
+}
+
+.Content h1 {
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
