@@ -7,13 +7,14 @@ const TableList = (props) => {
   // const m = props.editable;
 
   const membersList = props.members.map(member => (<MemberRow
-    onEdit={props.onEdit}
-    editable={props.editable}
-    cancel={props.cancel}
+    onEdit={() => props.onEdit(member.id)}
+    onDelete={() => props.onDelete(member.id)}
+    editable={member.editable}
+    cancel={() => props.cancel(member.id)}
     name={member.name}
     email={member.email}
     phone={member.phone}
-    keys={member.name}
+    key={member.name + member.phone + member.id}
   />));
 
 
@@ -28,27 +29,21 @@ const TableList = (props) => {
         </tr>
       </thead>
       <tbody>
-        {/* <tr>
-          <td><input type="text" name="name" value="Khaled" readOnly={!props.editable} /></td>
-          <td><input type="text" name="email" value="Khaled@test.com"
-          readOnly={!props.editable} /></td> // eslint-disable-line
-          <td><input type="text" name="phone" value="12345678" readOnly={!props.editable} /></td>
-          <td>
-            {editButton}
-          </td>
-        </tr> */}
         {membersList}
       </tbody>
-
     </table>
   );
 };
 
 TableList.propTypes = {
-  editable: PropTypes.bool.isRequired,
-  onEdit: PropTypes.func.isRequired,
-  cancel: PropTypes.func.isRequired,
-  members: PropTypes.arrayOf.isRequired,
+//   onEdit: PropTypes.func.isRequired,
+//   cancel: PropTypes.func.isRequired,
+  members: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+
+  })).isRequired,
 };
 
 

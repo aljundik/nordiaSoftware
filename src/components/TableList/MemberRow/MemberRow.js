@@ -7,7 +7,7 @@ const MemberRow = (props) => {
   let editButton = (
     <div className={classes.Options}>
       <div onClick={props.onEdit} role="button" tabIndex="-1" onKeyUp={() => {}} className={classes.Option1} ><i className="fas fa-pencil-alt" /></div>
-      <div className={classes.Option2}><i className="fas fa-trash" /></div>
+      <div onClick={props.onDelete} role="button" tabIndex="-1" onKeyUp={() => {}} className={classes.Option2}><i className="fas fa-trash" /></div>
     </div>
   );
 
@@ -35,6 +35,7 @@ const MemberRow = (props) => {
 MemberRow.propTypes = {
   editable: PropTypes.bool.isRequired,
   onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
   cancel: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
