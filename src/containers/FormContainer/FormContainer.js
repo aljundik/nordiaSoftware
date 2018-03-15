@@ -16,7 +16,6 @@ class FormContainer extends Component {
       errors: {},  // eslint-disable-line
     }
     onChangeHandle = (e) => {
-      // const updatedMembers = [...this.state.member,];
       e.preventDefault();
 
       this.setState({ member: { ...this.state.member, [e.target.name]: e.target.value, }, });
@@ -37,8 +36,14 @@ class FormContainer extends Component {
       this.setState({ errors, }); // eslint-disable-line
       if (Object.keys(errors).length === 0) {
         this.props.onAddMember(member);
+        this.setState({
+          member: {
+            name: '',
+            email: '',
+            phone: '',
+          },
+        });
       }
-      console.log(this.state.errors);
     };
 
     validate= (data) => {
@@ -52,11 +57,20 @@ class FormContainer extends Component {
     };
 
     render() {
+      const {
+        name,
+        email,
+        phone,
+      } = this.state.member;
+
       return (
         <Form
           change={this.onChangeHandle}
           submit={this.onSubmitHandler}
           errors={this.state.errors}
+          name={name}
+          email={email}
+          phone={phone}
         />
       );
     }

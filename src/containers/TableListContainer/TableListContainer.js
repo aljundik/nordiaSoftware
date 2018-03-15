@@ -37,11 +37,8 @@ class TableListContainer extends Component {
       this.props.onCancel(index);
     }
 
-    onClickSaveHandle = (id) => {
-      // const index = id - 1;
-      console.log(id);
+    onClickSaveHandle = () => {
       this.props.onSave(this.state.members);
-      // this.props.onSave(index);
     }
 
     onClickDeleteHandle = (id) => {

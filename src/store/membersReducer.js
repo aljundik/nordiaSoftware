@@ -5,14 +5,20 @@ const initstate = {
   members: data.members,
 };
 
+// users.sort(function(a, b){
+//   if(a.firstname < b.firstname) return -1;
+//   if(a.firstname > b.firstname) return 1;
+//   return 0;
+// })
+
 function updateObjectInArrayEdit(array, action) {
   return array.map((item) => {
     if (item.id !== action) {
-      // This isn't the item we care about - keep it as-is
       return item;
     }
+
     item.editable = true; // eslint-disable-line
-    // Otherwise, this is the one we want - return an updated value
+
     return {
       ...item,
     };
@@ -22,34 +28,15 @@ function updateObjectInArrayEdit(array, action) {
 function updateObjectInArrayCancel(array, action) {
   return array.map((item) => {
     if (item.id !== action) {
-      // This isn't the item we care about - keep it as-is
       return item;
     }
-      item.editable = false; // eslint-disable-line
-    // Otherwise, this is the one we want - return an updated value
+
+    item.editable = false; // eslint-disable-line
     return {
       ...item,
     };
   });
 }
-
-// function updateObjectInArraySave(array, action) {
-//   console.log(action);
-//   const newArray = array.slice();
-//   newArray.splice(action.id - 1, 1, action);
-//   return newArray;
-
-// return array.map((item) => {
-//   if (item.id !== action.id) {
-//     // This isn't the item we care about - keep it as-is
-//     return item;
-//   }
-//     item.editable = false; // eslint-disable-line
-//   // Otherwise, this is the one we want - return an updated value
-//   return {
-//     ...item,
-//   };
-// });
 
 
 function addMemberToArray(array, member) {
@@ -76,7 +63,6 @@ function updateMemberfromArray(array, action) {
   const newArray = array.slice();
   const { name, id, } = action;
   return newArray.map(((member) => {
-    //  const newMember = Object.assign({}, member);
     if (member.id !== id) {
       return {
         ...member,
@@ -98,21 +84,25 @@ const reducer = (state = initstate, action) => {
         ...state,
         members: updateObjectInArrayEdit(state.members, action.payroll), // eslint-disable-line
       };
+
     case (actions.CANCEL_BUTTON_CLICKED):
       return {
         ...state,
         members: updateObjectInArrayCancel(state.members, action.payroll),
       };
+
     case (actions.SAVE_BUTTON_CLICKED):
       return {
         ...state,
         members: action.payroll,
       };
+
     case (actions.ADD_MEBMER):
       return {
         ...state,
         members: addMemberToArray(state.members, action.payroll),
       };
+
     case (actions.DELETE_MEBMER):
       return {
         ...state,
@@ -124,6 +114,7 @@ const reducer = (state = initstate, action) => {
         ...state,
         members: updateMemberfromArray(state.members, action),
       };
+
     default: return state;
   }
 };

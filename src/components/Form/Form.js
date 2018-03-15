@@ -8,11 +8,11 @@ const Form = props => (
     { props.errors.email && <InlineValidate error={props.errors.email} /> }
     { props.errors.name && <InlineValidate error={props.errors.name} /> }
     { props.errors.phone && <InlineValidate error={props.errors.phone} /> }
-    <form className={classes.Form}>
-      <input onChange={props.change} type="text" name="name" placeholder="Full name" />
-      <input onChange={props.change} type="email" name="email" placeholder="Email-address" />
-      <input onChange={props.change} type="tel" name="phone" placeholder="Phone Number" />
-      <button onClick={props.submit} type="submit">Add new</button>
+    <form className={classes.Form} onSubmit={props.submit}>
+      <input onChange={props.change} value={props.name} type="text" name="name" placeholder="Full name" />
+      <input onChange={props.change} value={props.email} type="email" name="email" placeholder="Email-address" />
+      <input onChange={props.change} value={props.phone} type="tel" name="phone" placeholder="Phone Number" />
+      <button type="submit">Add new</button>
     </form>
   </div>
 );
@@ -25,10 +25,16 @@ Form.propTypes = {
     name: PropTypes.string,
     phone: PropTypes.string,
   }),
+  name: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.string,
 };
 
 Form.defaultProps = {
   errors: {},
+  name: '',
+  email: '',
+  phone: '',
 };
 
 export default Form;

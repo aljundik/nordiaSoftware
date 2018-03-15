@@ -39,7 +39,6 @@ const TableList = (props) => {
 };
 
 TableList.propTypes = {
-//   onEdit: PropTypes.func.isRequired,
   save: PropTypes.func.isRequired,
   members: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -50,5 +49,4 @@ TableList.propTypes = {
 };
 
 
-// https://5aa83871cef9ba001442fcc8.mockapi.io/api/v1/users
 export default TableList;
