@@ -1,5 +1,6 @@
 import React, { Component, } from 'react';
 import { connect, } from 'react-redux';
+import Validator from 'validator';
 import PropTypes from 'prop-types';
 import Form from '../../components/Form/Form';
 import { addMember, } from '../../store/members';
@@ -12,6 +13,7 @@ class FormContainer extends Component {
         phone: '',
         id: '',
       },
+      errors: {},  // eslint-disable-line
     }
     onChangeHandle = (e) => {
       // const updatedMembers = [...this.state.member,];
@@ -30,11 +32,32 @@ class FormContainer extends Component {
         id: updatedId,
         editable: false,
       };
-      this.props.onAddMember(member);
-    }
+
+      const errors = this.validate(member);
+      this.setState({ errors, }); // eslint-disable-line
+      if (Object.keys(errors).length === 0) {
+        this.props.onAddMember(member);
+      }
+      console.log(this.state.errors);
+    };
+
+    validate= (data) => {
+      const errors = {};
+      const { name, email, phone, } = data;
+      if (!Validator.isEmail(email)) errors.email = 'Email is invalid';
+      if (Validator.isEmpty(name)) errors.name = "Name shouldn't be embty";
+      if (Validator.isEmpty(phone) && !Validator.isNumeric(phone)) errors.phone = 'Phone should not be empty and most be a number';
+
+      return errors;
+    };
+
     render() {
       return (
-        <Form change={this.onChangeHandle} submit={this.onSubmitHandler} />
+        <Form
+          change={this.onChangeHandle}
+          submit={this.onSubmitHandler}
+          errors={this.state.errors}
+        />
       );
     }
 }

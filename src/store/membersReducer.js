@@ -1,22 +1,8 @@
 import * as actions from './actions';
+import data from './data/data';
 
 const initstate = {
-  members: [
-    {
-      name: 'khaled Aljundi',
-      email: 'khaled@test.com',
-      phone: '1234567',
-      id: 1,
-      editable: false,
-    },
-    {
-      name: 'khaled Aljundi2',
-      email: 'khaled@test.com',
-      phone: '1234567',
-      id: 2,
-      editable: false,
-    },
-  ],
+  members: data.members,
 };
 
 function updateObjectInArrayEdit(array, action) {
@@ -47,19 +33,24 @@ function updateObjectInArrayCancel(array, action) {
   });
 }
 
-function updateObjectInArraySave(array, action) {
-  return array.map((item, index) => {
-    if (index !== action) {
-      // This isn't the item we care about - keep it as-is
-      return item;
-    }
-      item.editable = false; // eslint-disable-line
-    // Otherwise, this is the one we want - return an updated value
-    return {
-      ...item,
-    };
-  });
-}
+// function updateObjectInArraySave(array, action) {
+//   console.log(action);
+//   const newArray = array.slice();
+//   newArray.splice(action.id - 1, 1, action);
+//   return newArray;
+
+// return array.map((item) => {
+//   if (item.id !== action.id) {
+//     // This isn't the item we care about - keep it as-is
+//     return item;
+//   }
+//     item.editable = false; // eslint-disable-line
+//   // Otherwise, this is the one we want - return an updated value
+//   return {
+//     ...item,
+//   };
+// });
+
 
 function addMemberToArray(array, member) {
   const newArray = array.slice();
@@ -69,7 +60,7 @@ function addMemberToArray(array, member) {
 
 function deleteMemberfromArray(array, id) {
   const newArray = array.slice();
-  newArray.splice(id - 1, 1);
+  newArray.splice(id, 1);
   return newArray;
 }
 
@@ -107,7 +98,7 @@ const reducer = (state = initstate, action) => {
     case (actions.SAVE_BUTTON_CLICKED):
       return {
         ...state,
-        members: updateObjectInArraySave(state.members, action.payroll),
+        members: action.payroll,
       };
     case (actions.ADD_MEBMER):
       return {

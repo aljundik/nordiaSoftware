@@ -10,9 +10,9 @@ const cancelButtonClicked = id => ({
   payroll: id,
 });
 
-const saveButtonClicked = id => ({
-  type: actions.CANCEL_BUTTON_CLICKED,
-  payroll: id,
+const saveButtonClicked = members => ({
+  type: actions.SAVE_BUTTON_CLICKED,
+  payroll: members,
 });
 
 const addMember = member => ({
@@ -25,11 +25,9 @@ const deleteMember = id => ({
   payroll: id,
 });
 
-const updateMember = (name, value, id) => ({
+const updateMember = member => ({
   type: actions.UPDATE_MEMBER,
-  name,
-  value,
-  id,
+  member,
 });
 
 export { editButtonClicked, cancelButtonClicked, addMember, deleteMember, updateMember, saveButtonClicked };// eslint-disable-line

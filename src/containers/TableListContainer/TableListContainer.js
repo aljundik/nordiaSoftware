@@ -5,11 +5,26 @@ import TableList from '../../components/TableList/TableList';
 import { editButtonClicked, cancelButtonClicked, deleteMember, updateMember, saveButtonClicked, } from '../../store/members';
 
 class TableListContainer extends Component {
+  state = {
+    members: null,
+  }
   onChangeHandle = (e, id) => {
     e.preventDefault();
+    // if (e.target.name === 'name') {
+    const updatedMembers = this.props.members.map((member) => {
+      if (member.id !== id) {
+        return { ...member, };
+      }
+      member[e.target.name] = e.target.value; // eslint-disable-line
 
-    this.props.onUpdate(e.target.name, e.target.value, id);
+      return member;
+    });
+    this.setState({ members: updatedMembers, });
   }
+
+    onUpdateHandle = () => {
+      this.props.onUpdate(this.state.member);
+    }
 
     onClickEditHandle = (id) => {
       const index = id - 1;
@@ -23,9 +38,10 @@ class TableListContainer extends Component {
     }
 
     onClickSaveHandle = (id) => {
-      const index = id - 1;
-
-      this.props.onSave(index);
+      // const index = id - 1;
+      console.log(id);
+      this.props.onSave(this.state.members);
+      // this.props.onSave(index);
     }
 
     onClickDeleteHandle = (id) => {
@@ -68,6 +84,6 @@ const mapDispatchToProps = dispatch => ({
   onCancel: (id) => { dispatch(cancelButtonClicked(id)); },
   onSave: (id) => { dispatch(saveButtonClicked(id)); },
   onDelete: (id) => { dispatch(deleteMember(id)); },
-  onUpdate: (name, value, id) => { dispatch(updateMember(name, value, id)); },
+  onUpdate: (member) => { dispatch(updateMember(member)); },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(TableListContainer);

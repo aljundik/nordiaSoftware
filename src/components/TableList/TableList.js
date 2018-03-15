@@ -12,7 +12,7 @@ const TableList = (props) => {
     onChangeHandle={e => props.onChangeHandle(e, member.id)}
     editable={member.editable}
     cancel={() => props.cancel(member.id)}
-    save={() => props.save(member.id)}
+    save={props.save}
     name={member.name}
     email={member.email}
     phone={member.phone}
@@ -40,7 +40,7 @@ const TableList = (props) => {
 
 TableList.propTypes = {
 //   onEdit: PropTypes.func.isRequired,
-//   cancel: PropTypes.func.isRequired,
+  save: PropTypes.func.isRequired,
   members: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
