@@ -12,6 +12,7 @@ const TableList = (props) => {
     onChangeHandle={e => props.onChangeHandle(e, member.id)}
     editable={member.editable}
     cancel={() => props.cancel(member.id)}
+    save={() => props.save(member.id)}
     name={member.name}
     email={member.email}
     phone={member.phone}

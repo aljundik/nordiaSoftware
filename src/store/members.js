@@ -10,6 +10,11 @@ const cancelButtonClicked = id => ({
   payroll: id,
 });
 
+const saveButtonClicked = id => ({
+  type: actions.CANCEL_BUTTON_CLICKED,
+  payroll: id,
+});
+
 const addMember = member => ({
   type: actions.ADD_MEBMER,
   payroll: member,
@@ -27,4 +32,4 @@ const updateMember = (name, value, id) => ({
   id,
 });
 
-export { editButtonClicked, cancelButtonClicked, addMember, deleteMember, updateMember };// eslint-disable-line
+export { editButtonClicked, cancelButtonClicked, addMember, deleteMember, updateMember, saveButtonClicked };// eslint-disable-line

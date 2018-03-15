@@ -15,7 +15,7 @@ const MemberRow = (props) => {
     editButton = (
       <div className={classes.Buttons}>
         <button onClick={props.cancel} className={classes.btnCancel}>Cancel</button>
-        <button className={classes.btnSave}>Save</button>
+        <button onClick={props.save} className={classes.btnSave}>Save</button>
       </div>);
   }
 
@@ -41,5 +41,6 @@ MemberRow.propTypes = {
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
+  save: PropTypes.func.isRequired,
 };
 export default MemberRow;
