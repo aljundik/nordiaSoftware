@@ -27,12 +27,12 @@ class TableListContainer extends Component {
     }
 
     onClickEditHandle = (id) => {
-      const index = id - 1;
+      const index = id;
 
       this.props.onEdit(index);
     }
     onClickCancelHandle = (id) => {
-      const index = id - 1;
+      const index = id;
 
       this.props.onCancel(index);
     }
@@ -45,7 +45,7 @@ class TableListContainer extends Component {
     }
 
     onClickDeleteHandle = (id) => {
-      const index = id - 1;
+      const index = id;
 
       this.props.onDelete(index);
     }

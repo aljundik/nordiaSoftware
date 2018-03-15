@@ -6,8 +6,8 @@ const initstate = {
 };
 
 function updateObjectInArrayEdit(array, action) {
-  return array.map((item, index) => {
-    if (index !== action) {
+  return array.map((item) => {
+    if (item.id !== action) {
       // This isn't the item we care about - keep it as-is
       return item;
     }
@@ -20,8 +20,8 @@ function updateObjectInArrayEdit(array, action) {
 }
 
 function updateObjectInArrayCancel(array, action) {
-  return array.map((item, index) => {
-    if (index !== action) {
+  return array.map((item) => {
+    if (item.id !== action) {
       // This isn't the item we care about - keep it as-is
       return item;
     }
@@ -60,7 +60,15 @@ function addMemberToArray(array, member) {
 
 function deleteMemberfromArray(array, id) {
   const newArray = array.slice();
-  newArray.splice(id, 1);
+  const updatedArray = newArray.map((e, index) => { // eslint-disable-line
+    if (e.id === id) {
+      newArray.splice(index, 1);
+      return e;
+    }
+    return {
+      ...e,
+    };
+  });
   return newArray;
 }
 
