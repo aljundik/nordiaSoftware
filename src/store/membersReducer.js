@@ -59,6 +59,28 @@ function deleteMemberfromArray(array, id) {
   return newArray;
 }
 
+function updateMemberfromArray(array, action) {
+  console.log('updated member Action value id', action.id);
+  const newArray = array.slice();
+  const { name, id, } = action;
+  return newArray.map(((member) => {
+    //  const newMember = Object.assign({}, member);
+    if (member.id !== id) {
+      return {
+        ...member,
+      };
+    }
+    console.log('updated member member value id', member.id);
+
+    member[name] = action.value; // eslint-disable-line
+    console.log('updated member', member);
+    return member;
+  }
+
+
+  ));
+}
+
 const reducer = (state = initstate, action) => {
   switch (action.type) {
     case (actions.EDIT_BUTTON_CLICKED):
@@ -80,6 +102,12 @@ const reducer = (state = initstate, action) => {
       return {
         ...state,
         members: deleteMemberfromArray(state.members, action.payroll),
+      };
+
+    case (actions.UPDATE_MEMBER):
+      return {
+        ...state,
+        members: updateMemberfromArray(state.members, action),
       };
     default: return state;
   }

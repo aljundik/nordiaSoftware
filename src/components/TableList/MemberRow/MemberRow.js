@@ -21,9 +21,9 @@ const MemberRow = (props) => {
 
   return (
     <tr>
-      <td><input type="text" name="name" value={props.name} readOnly={!props.editable} /></td>
-      <td><input type="text" name="email" value={props.email} readOnly={!props.editable} /></td>
-      <td><input type="text" name="phone" value={props.phone}readOnly={!props.editable} /></td>
+      <td><input onChange={props.onChangeHandle} type="text" name="name" defaultValue={props.name} readOnly={!props.editable} /></td>
+      <td><input onChange={props.onChangeHandle} type="text" name="email" defaultValue={props.email} readOnly={!props.editable} /></td>
+      <td><input onChange={props.onChangeHandle} type="text" name="phone" defaultValue={props.phone}readOnly={!props.editable} /></td>
       <td>
         {editButton}
       </td>
@@ -35,6 +35,7 @@ const MemberRow = (props) => {
 MemberRow.propTypes = {
   editable: PropTypes.bool.isRequired,
   onEdit: PropTypes.func.isRequired,
+  onChangeHandle: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   cancel: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,

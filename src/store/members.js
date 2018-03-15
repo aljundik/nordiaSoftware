@@ -20,4 +20,11 @@ const deleteMember = id => ({
   payroll: id,
 });
 
-export { editButtonClicked, cancelButtonClicked, addMember, deleteMember };// eslint-disable-line
+const updateMember = (name, value, id) => ({
+  type: actions.UPDATE_MEMBER,
+  name,
+  value,
+  id,
+});
+
+export { editButtonClicked, cancelButtonClicked, addMember, deleteMember, updateMember };// eslint-disable-line

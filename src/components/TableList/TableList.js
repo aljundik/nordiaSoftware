@@ -9,11 +9,13 @@ const TableList = (props) => {
   const membersList = props.members.map(member => (<MemberRow
     onEdit={() => props.onEdit(member.id)}
     onDelete={() => props.onDelete(member.id)}
+    onChangeHandle={e => props.onChangeHandle(e, member.id)}
     editable={member.editable}
     cancel={() => props.cancel(member.id)}
     name={member.name}
     email={member.email}
     phone={member.phone}
+    id={member.id}
     key={member.name + member.phone + member.id}
   />));
 
