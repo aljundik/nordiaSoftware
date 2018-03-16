@@ -2,7 +2,14 @@ import React, { Component, } from 'react';
 import { connect, } from 'react-redux';
 import PropTypes from 'prop-types';
 import TableList from '../../components/TableList/TableList';
-import { editButtonClicked, cancelButtonClicked, deleteMember, updateMember, saveButtonClicked, } from '../../store/members';
+import {
+  editButtonClicked,
+  cancelButtonClicked,
+  deleteMember,
+  updateMember,
+  saveButtonClicked,
+  sortByName,
+} from '../../store/members';
 
 class TableListContainer extends Component {
   state = {
@@ -10,7 +17,6 @@ class TableListContainer extends Component {
   }
   onChangeHandle = (e, id) => {
     e.preventDefault();
-    // if (e.target.name === 'name') {
     const updatedMembers = this.props.members.map((member) => {
       if (member.id !== id) {
         return { ...member, };
@@ -55,6 +61,7 @@ class TableListContainer extends Component {
           onDelete={this.onClickDeleteHandle}
           onChangeHandle={this.onChangeHandle}
           members={this.props.members}
+          sortByName={this.props.onSortName}
         />
       );
     }
@@ -70,6 +77,7 @@ TableListContainer.propTypes = {
   onSave: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
+  onSortName: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -82,5 +90,6 @@ const mapDispatchToProps = dispatch => ({
   onSave: (id) => { dispatch(saveButtonClicked(id)); },
   onDelete: (id) => { dispatch(deleteMember(id)); },
   onUpdate: (member) => { dispatch(updateMember(member)); },
+  onSortName: (name) => { dispatch(sortByName(name)); },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(TableListContainer);

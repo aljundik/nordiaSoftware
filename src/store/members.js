@@ -30,4 +30,16 @@ const updateMember = member => ({
   member,
 });
 
-export { editButtonClicked, cancelButtonClicked, addMember, deleteMember, updateMember, saveButtonClicked };// eslint-disable-line
+const sortByName = name => ({
+  type: actions.SORT_BY_NAME,
+  payroll: name,
+});
+
+export {
+  editButtonClicked,
+  cancelButtonClicked,
+  addMember,
+  deleteMember,
+  updateMember,
+  saveButtonClicked,
+  sortByName, };// eslint-disable-line

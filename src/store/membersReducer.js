@@ -5,11 +5,6 @@ const initstate = {
   members: data.members,
 };
 
-// users.sort(function(a, b){
-//   if(a.firstname < b.firstname) return -1;
-//   if(a.firstname > b.firstname) return 1;
-//   return 0;
-// })
 
 function updateObjectInArrayEdit(array, action) {
   return array.map((item) => {
@@ -56,6 +51,17 @@ function deleteMemberfromArray(array, id) {
       ...e,
     };
   });
+  return newArray;
+}
+
+function sortByName(array, name) {
+  const newArray = array.slice();
+  newArray.sort((a, b) => {
+    if (a[name] > b[name]) return 1;
+    if (b[name] > a[name]) return -1;
+    return 0;
+  });
+
   return newArray;
 }
 
@@ -113,6 +119,12 @@ const reducer = (state = initstate, action) => {
       return {
         ...state,
         members: updateMemberfromArray(state.members, action),
+      };
+
+    case (actions.SORT_BY_NAME):
+      return {
+        ...state,
+        members: sortByName(state.members, action.payroll),
       };
 
     default: return state;

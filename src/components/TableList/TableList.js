@@ -25,9 +25,9 @@ const TableList = (props) => {
     <table className={classes.TableList}>
       <thead>
         <tr>
-          <th>Name<div className={classes.Icon}><i className="fas fa-arrow-down Icon" /></div></th>
-          <th>E-mail address</th>
-          <th>Phone number</th>
+          <th onClick={() => props.sortByName('name')}>Name<div className={classes.Icon}><i className="fas fa-arrow-down Icon" /></div></th>
+          <th onClick={() => props.sortByName('email')}>E-mail address</th>
+          <th onClick={() => props.sortByName('phone')}>Phone number</th>
           <th />
         </tr>
       </thead>
@@ -40,6 +40,7 @@ const TableList = (props) => {
 
 TableList.propTypes = {
   save: PropTypes.func.isRequired,
+  sortByName: PropTypes.func.isRequired,
   members: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
