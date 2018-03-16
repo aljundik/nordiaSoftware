@@ -18,7 +18,7 @@ Navigate to the project directory, and run:
 ### `sudo npm install`
 And then Type your password<br>
 
-### Visit [https://listofparticipant.firebaseapp.com/] for a life review
+### Visit [https://listofparticipant.firebaseapp.com/] for a live review
 
 Best Of Luck :).<br>
 
