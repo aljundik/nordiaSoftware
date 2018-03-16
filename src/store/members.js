@@ -10,9 +10,10 @@ const cancelButtonClicked = id => ({
   payroll: id,
 });
 
-const saveButtonClicked = members => ({
+const saveButtonClicked = (members, id) => ({
   type: actions.SAVE_BUTTON_CLICKED,
   payroll: members,
+  id,
 });
 
 const addMember = member => ({

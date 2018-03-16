@@ -13,7 +13,7 @@ import {
 
 class TableListContainer extends Component {
   state = {
-    members: null,
+    members: this.props.members,
   }
   onChangeHandle = (e, id) => {
     e.preventDefault();
@@ -43,8 +43,12 @@ class TableListContainer extends Component {
       this.props.onCancel(index);
     }
 
-    onClickSaveHandle = () => {
-      this.props.onSave(this.state.members);
+    onClickSaveHandle = (id) => {
+      try {
+        this.props.onSave(this.state.members, id);
+      } catch (e) {
+        console.log('you are not savein', e);
+      }
     }
 
     onClickDeleteHandle = (id) => {

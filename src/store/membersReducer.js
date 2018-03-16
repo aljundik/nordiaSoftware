@@ -33,6 +33,18 @@ function updateObjectInArrayCancel(array, action) {
   });
 }
 
+function updateObjectInArraySave(array, action) {
+  return array.map((item) => {
+    if (item.id === action) {
+      return { item, };
+    }
+
+    item.editable = false; // eslint-disable-line
+    return {
+      ...item,
+    };
+  });
+}
 
 function addMemberToArray(array, member) {
   const newArray = array.slice();
@@ -100,7 +112,7 @@ const reducer = (state = initstate, action) => {
     case (actions.SAVE_BUTTON_CLICKED):
       return {
         ...state,
-        members: action.payroll,
+        members: updateObjectInArraySave(action.payroll, action.id),
       };
 
     case (actions.ADD_MEBMER):
